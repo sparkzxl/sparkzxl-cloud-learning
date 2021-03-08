@@ -1,0 +1,41 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: sparkzxl-product-server
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.116.52.58:8086
+        namespace: 3cca7d98-3b1c-44d3-90e5-86abaaf0048a
+      config:
+        server-addr: 47.116.52.58:8086
+        namespace: 3cca7d98-3b1c-44d3-90e5-86abaaf0048a
+        file-extension: yaml
+        prefix: ${spring.application.name}
+        shared-configs:
+          - dataId: redis.yaml
+            group: DEFAULT_GROUP
+            refresh: false
+          - dataId: common.yaml
+            group: DEFAULT_GROUP
+            refresh: false
+        enable-remote-sync-config: true
+        refresh-enabled: true
+seata:
+  application-id: ${spring.application.name} # Seata 应用编号，默认为 ${spring.application.name}
+  tx-service-group: ${spring.application.name}-group # Seata 事务组编号，用于 TC 集群名
+  # 服务配置项，对应 ServiceProperties 类
+  service:
+    # 虚拟组和分组的映射
+    vgroup-mapping:
+      sparkzxl-product-server-group: default
+  registry:
+    type: nacos
+    nacos:
+      cluster: default
+      namespace: 3cca7d98-3b1c-44d3-90e5-86abaaf0048a
+      server-addr: 47.116.52.58:8086
+      group: DEFAULT_GROUP

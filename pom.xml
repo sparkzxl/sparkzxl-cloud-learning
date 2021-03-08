@@ -30,9 +30,12 @@
     </properties>
 
     <modules>
-        <module>spark-wechat-admin</module>
+        <module>sparkzxl-wechat-admin</module>
+        <module>sparkzxl-account</module>
         <module>sparkzxl-admin-server</module>
         <module>sparkzxl-code-generator</module>
+        <module>sparkzxl-order</module>
+        <module>sparkzxl-product</module>
         <module>sparkzxl-sharding-demo</module>
         <module>sparkzxl-test-demo</module>
     </modules>
