@@ -1,0 +1,30 @@
+server:
+  shutdown: graceful
+  port: 8907
+spring:
+  application:
+    name: sparkzxl-wechat-admin
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.114.40.129:8848
+        namespace: 983fff7f-8151-4679-a8a7-75ca992fe53b
+      config:
+        server-addr: 47.114.40.129:8848
+        namespace: 983fff7f-8151-4679-a8a7-75ca992fe53b
+        file-extension: yaml
+        prefix: ${spring.application.name}
+        shared-configs:
+          - dataId: redis.yaml
+            group: DEFAULT_GROUP
+            refresh: false
+          - dataId: common.yaml
+            group: DEFAULT_GROUP
+            refresh: false
+        enable-remote-sync-config: true
+        refresh-enabled: true
+logging:
+  level:
+    com.github.sparkzxl.wechat.admin.infrastructure.mapper: debug
