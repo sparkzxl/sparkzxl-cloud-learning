@@ -1,0 +1,36 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: sparkzxl-sentinel-account
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.114.40.129:8848
+        namespace: 243dde1a-b759-4d41-b563-ae6a5b7b8810
+      config:
+        server-addr: 47.114.40.129:8848
+        namespace: 243dde1a-b759-4d41-b563-ae6a5b7b8810
+        file-extension: yaml
+        prefix: ${spring.application.name}
+        shared-configs:
+          - dataId: redis.yaml
+            group: DEFAULT_GROUP
+            refresh: false
+          - dataId: common.yaml
+            group: DEFAULT_GROUP
+            refresh: false
+        enable-remote-sync-config: true
+        refresh-enabled: true
+    sentinel:
+      enabled: true # 是否开启。默认为 true 开启
+      eager: true # 是否饥饿加载。默认为 false 关闭
+      transport:
+        dashboard: 127.0.0.1:8858 # Sentinel 控制台地址
+      filter:
+        url-patterns: /** # 拦截请求的地址。默认为 /*
+feign:
+  hystrix:
+    enabled: false

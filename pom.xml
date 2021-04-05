@@ -38,6 +38,7 @@
         <module>sparkzxl-product</module>
         <module>sparkzxl-sharding-demo</module>
         <module>sparkzxl-test-demo</module>
+        <module>sparkzxl-sentinel-learn</module>
     </modules>
 
     <repositories>

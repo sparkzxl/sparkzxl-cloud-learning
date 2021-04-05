@@ -16,7 +16,7 @@ import java.util.Scanner;
 /**
  * description: 代码生成类
  *
- * @author zhouxinlei
+ * @author charles.zhou
  * @date 2020-05-24 12:20:58
  */
 public class MybatisPlusGenerator {
@@ -27,7 +27,7 @@ public class MybatisPlusGenerator {
      * @param tip
      * @return String[]
      * @throws
-     * @author zhouxinlei
+     * @author charles.zhou
      * @date 2020-04-12 14:06:32
      */
     public static String[] scanner(String tip) {
@@ -51,8 +51,9 @@ public class MybatisPlusGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir(projectPath + "/sparkzxl-activiti/sparkzxl-activiti-server/src/main/java");
+        gc.setOutputDir(projectPath + "/sparkzxl-sentinel-learn/sparkzxl-sentinel-product/src/main/java");
         gc.setFileOverride(true);
+        gc.setBaseResultMap(true);
         gc.setSwagger2(true);
         gc.setDateType(DateType.TIME_PACK);
         gc.setIdType(IdType.ASSIGN_ID);
@@ -64,16 +65,16 @@ public class MybatisPlusGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://rm-bp1cp68o8t1gq604p5o.mysql.rds.aliyuncs" +
-                ".com/activiti?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://sparkzxl.mysql.rds.aliyuncs" +
+                ".com/sparkzxl_learning?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("zhouxinlei");
-        dsc.setPassword("zxl298828");
+        dsc.setPassword("Zxl298828");
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setParent("com.github.sparkzxl.activiti");
+        pc.setParent("com.github.sparkzxl.product");
         pc.setController("interfaces.controller");
         pc.setService("application.service");
         pc.setServiceImpl("domain.service");

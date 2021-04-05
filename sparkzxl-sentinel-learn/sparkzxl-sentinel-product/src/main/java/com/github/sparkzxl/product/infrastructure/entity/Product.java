@@ -3,9 +3,6 @@ package com.github.sparkzxl.product.infrastructure.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableField;
 
 import java.io.Serializable;
@@ -21,7 +18,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author zhouxinlei
- * @since 2020-12-07
+ * @since 2021-04-05
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -31,14 +28,17 @@ public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @ApiModelProperty(value = "主键")
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    private Long id;
 
+    @ApiModelProperty(value = "商品名称")
+    @TableField("name")
+    private String name;
+
+    @ApiModelProperty(value = "库存")
     @TableField("stock")
     private Integer stock;
-
-    @TableField("last_update_time")
-    private LocalDateTime lastUpdateTime;
 
 
 }
