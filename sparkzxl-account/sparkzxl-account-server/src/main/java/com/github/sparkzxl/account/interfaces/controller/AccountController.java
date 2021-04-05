@@ -3,8 +3,8 @@ package com.github.sparkzxl.account.interfaces.controller;
 
 import com.github.sparkzxl.account.api.AccountApi;
 import com.github.sparkzxl.account.application.service.IAccountService;
+import com.github.sparkzxl.core.annotation.ResponseResult;
 import com.github.sparkzxl.log.annotation.WebLog;
-import com.github.sparkzxl.web.annotation.ResponseResult;
 import org.springframework.web.bind.annotation.*;
 
 /**

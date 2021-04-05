@@ -14,10 +14,6 @@
     <dependencies>
         <dependency>
             <groupId>com.github.sparkzxl</groupId>
-            <artifactId>sparkzxl-distributed-cloud-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.sparkzxl</groupId>
             <artifactId>sparkzxl-boot-starter</artifactId>
         </dependency>
         <dependency>

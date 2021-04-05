@@ -1,10 +1,10 @@
 package com.github.sparkzxl.product.interfaces.controller;
 
 
+import com.github.sparkzxl.core.annotation.ResponseResult;
 import com.github.sparkzxl.log.annotation.WebLog;
 import com.github.sparkzxl.product.api.ProductApi;
 import com.github.sparkzxl.product.application.service.IProductService;
-import com.github.sparkzxl.web.annotation.ResponseResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;

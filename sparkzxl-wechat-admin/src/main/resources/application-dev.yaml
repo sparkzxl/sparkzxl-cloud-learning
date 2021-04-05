@@ -1,0 +1,52 @@
+server:
+  shutdown: graceful
+  port: 8907
+spring:
+  application:
+    name: sparkzxl-wechat-admin
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+    # 数据库配置
+  datasource:
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:mysql://sparkzxl.mysql.rds.aliyuncs.com/sparkzxl_auth?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
+    username: zhouxinlei
+    password: Zxl298828
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.github.sparkzxl.wechat.admin.infrastructure.entity
+  custom:
+    mapper-scan: com.github.sparkzxl.wechat.admin.infrastructure.mapper
+  configuration:
+    map-underscore-to-camel-case: true
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  offsetAsPageNum: true
+  params: count=countSql
+wechat:
+  redis:
+    host: 47.114.40.129
+  open: #微信开放平台相关参数配置 zs 20190329
+    componentAppId: wx6b10801b9d0a6d37
+    componentSecret: 09e2f29a501a6ac263f65b7723457233
+    componentToken: vAmHEPOHzLYdPbdHQr
+    componentAesKey: h5ZLebWWXyxA6WbmOH99Xmcomh9vZeJv9yMwNiyBxXw
+logging:
+  level:
+    com.github.sparkzxl.wechat.admin.infrastructure.mapper: debug
+knife4j:
+  enable: true
+  description: sparkzxl 分库分表在线文档
+  base-package: com.github.sparkzxl.wechat.admin.interfaces
+  group: 分库分表应用
+  title: sparkzxl 分库分表在线文档
+  terms-of-service-url: https://www.sparksys.top
+  version: 1.0
+  license: Powered By sparkzxl
+  license-url: https://github.com/sparkzxl
+  contact:
+    name: zhouxinlei
+    email: zhouxinlei298@163.com
+    url: https://github.com/sparkzxl

@@ -10,25 +10,6 @@ spring:
     name: sparkzxl-sharding-demo
   lifecycle:
     timeout-per-shutdown-phase: 30s
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 47.114.40.129:8848
-        namespace: 2093ac51-9ced-4336-86e3-096d81e3c252
-      config:
-        server-addr: 47.114.40.129:8848
-        namespace: 2093ac51-9ced-4336-86e3-096d81e3c252
-        file-extension: yaml
-        prefix: ${spring.application.name}
-        shared-configs:
-          - dataId: redis.yaml
-            group: DEFAULT_GROUP
-            refresh: false
-          - dataId: common.yaml
-            group: DEFAULT_GROUP
-            refresh: false
-        enable-remote-sync-config: true
-        refresh-enabled: true
   shardingsphere:
     datasource:
       # 所有数据源的名字
@@ -37,9 +18,9 @@ spring:
       ds-orders-0:
         type: com.zaxxer.hikari.HikariDataSource # 使用 Hikari 数据库连接池
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://47.114.40.129:3306/sparkzxl_order_0?useSSL=false&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
-        username: root
-        password: root
+        jdbc-url: jdbc:mysql://sparkzxl.mysql.rds.aliyuncs.com/sparkzxl_order_0?useSSL=false&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
+        username: zhouxinlei
+        password: Zxl298828
       # 订单 orders 数据源配置 01
       ds-orders-1:
         type: com.zaxxer.hikari.HikariDataSource # 使用 Hikari 数据库连接池
@@ -68,8 +49,32 @@ spring:
     props:
       sql:
         show: true # 打印 SQL
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.github.sparkzxl.sharding.infrastructure.entity
+  custom:
+    mapper-scan: com.github.sparkzxl.sharding.infrastructure.mapper
+  configuration:
+    map-underscore-to-camel-case: true
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
 logging:
   level:
     com.github.sparkzxl.sharding.infrastructure.mapper: debug
-  file:
-    path: /logs/${spring.application.name}
+knife4j:
+  enable: true
+  description: sparkzxl 分库分表在线文档
+  base-package: com.github.sparkzxl.sharding.interfaces
+  group: 分库分表应用
+  title: sparkzxl 分库分表在线文档
+  terms-of-service-url: https://www.sparksys.top
+  version: 1.0
+  license: Powered By sparkzxl
+  license-url: https://github.com/sparkzxl
+  contact:
+    name: zhouxinlei
+    email: zhouxinlei298@163.com
+    url: https://github.com/sparkzxl

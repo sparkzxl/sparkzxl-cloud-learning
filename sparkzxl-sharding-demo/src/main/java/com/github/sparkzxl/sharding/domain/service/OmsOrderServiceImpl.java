@@ -1,6 +1,6 @@
 package com.github.sparkzxl.sharding.domain.service;
 
-import com.github.sparkzxl.database.base.service.impl.AbstractSuperCacheServiceImpl;
+import com.github.sparkzxl.database.base.service.impl.SuperCacheServiceImpl;
 import com.github.sparkzxl.sharding.domain.repository.IOrderRepository;
 import com.github.sparkzxl.sharding.infrastructure.constant.OrderConstant;
 import com.github.sparkzxl.sharding.infrastructure.entity.OmsOrder;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @date: 2020-07-10 13:53:23
 */
 @Service
-public class OmsOrderServiceImpl extends AbstractSuperCacheServiceImpl<OmsOrderMapper, OmsOrder> implements IOmsOrderService {
+public class OmsOrderServiceImpl extends SuperCacheServiceImpl<OmsOrderMapper, OmsOrder> implements IOmsOrderService {
 
     private final IOrderRepository orderRepository;
 

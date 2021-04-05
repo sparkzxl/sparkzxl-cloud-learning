@@ -8,11 +8,11 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 47.116.52.58:8086
-        namespace: 3cca7d98-3b1c-44d3-90e5-86abaaf0048a
+        server-addr: 47.114.40.129:8848
+        namespace: 243dde1a-b759-4d41-b563-ae6a5b7b8810
       config:
-        server-addr: 47.116.52.58:8086
-        namespace: 3cca7d98-3b1c-44d3-90e5-86abaaf0048a
+        server-addr: 47.114.40.129:8848
+        namespace: 243dde1a-b759-4d41-b563-ae6a5b7b8810
         file-extension: yaml
         prefix: ${spring.application.name}
         shared-configs:
@@ -37,6 +37,6 @@ seata:
     type: nacos
     nacos:
       cluster: default
-      namespace: 3cca7d98-3b1c-44d3-90e5-86abaaf0048a
-      server-addr: 47.116.52.58:8086
+      namespace: 243dde1a-b759-4d41-b563-ae6a5b7b8810
+      server-addr: 47.114.40.129:8848
       group: DEFAULT_GROUP

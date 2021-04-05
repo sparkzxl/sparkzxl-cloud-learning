@@ -1,9 +1,9 @@
 package com.github.sparkzxl.order.interfaces.controller;
 
 
+import com.github.sparkzxl.core.annotation.ResponseResult;
 import com.github.sparkzxl.log.annotation.WebLog;
 import com.github.sparkzxl.order.application.service.IOrdersService;
-import com.github.sparkzxl.web.annotation.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
