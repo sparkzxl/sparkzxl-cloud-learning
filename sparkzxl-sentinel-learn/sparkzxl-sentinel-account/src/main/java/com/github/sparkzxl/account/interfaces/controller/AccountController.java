@@ -3,6 +3,7 @@ package com.github.sparkzxl.account.interfaces.controller;
 
 import com.github.sparkzxl.account.infrastructure.client.ProductClient;
 import com.github.sparkzxl.core.annotation.ResponseResult;
+import com.github.sparkzxl.core.context.BaseContextHandler;
 import com.github.sparkzxl.product.dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,7 @@ public class AccountController {
 
     @GetMapping("getAccountProduct")
     public ProductDto getAccountProduct(Long id) {
+        BaseContextHandler.setUserId(100);
         return productClient.getProduct(id);
     }
 }

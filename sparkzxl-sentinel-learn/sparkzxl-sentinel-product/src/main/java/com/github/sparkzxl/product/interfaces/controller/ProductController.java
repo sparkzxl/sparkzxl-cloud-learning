@@ -1,6 +1,7 @@
 package com.github.sparkzxl.product.interfaces.controller;
 
 
+import com.github.sparkzxl.core.context.BaseContextHandler;
 import com.github.sparkzxl.product.api.IProductApi;
 import com.github.sparkzxl.product.application.service.IProductService;
 import com.github.sparkzxl.product.dto.ProductDto;
@@ -28,6 +29,7 @@ public class ProductController implements IProductApi {
 
     @Override
     public ProductDto getProduct(Long id) {
+        System.out.println(BaseContextHandler.getUserId(Integer.TYPE));
         Product product = productService.getById(id);
         ProductDto productDto = new ProductDto();
         BeanUtils.copyProperties(product, productDto);
