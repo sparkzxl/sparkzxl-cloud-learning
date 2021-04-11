@@ -1,6 +1,6 @@
 package com.github.sparkzxl.test.domain.service;
 
-import com.github.sparkzxl.database.base.service.impl.AbstractSuperCacheServiceImpl;
+import com.github.sparkzxl.database.base.service.impl.SuperCacheServiceImpl;
 import com.github.sparkzxl.test.application.service.IAuthUserService;
 import com.github.sparkzxl.test.infrastructure.entity.AuthUser;
 import com.github.sparkzxl.test.infrastructure.mapper.AuthUserMapper;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Slf4j
-public class AuthUserServiceImpl extends AbstractSuperCacheServiceImpl<AuthUserMapper, AuthUser> implements IAuthUserService {
+public class AuthUserServiceImpl extends SuperCacheServiceImpl<AuthUserMapper, AuthUser> implements IAuthUserService {
 
     @Override
     protected String getRegion() {

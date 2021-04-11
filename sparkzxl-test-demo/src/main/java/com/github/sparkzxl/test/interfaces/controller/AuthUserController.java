@@ -30,11 +30,11 @@ import java.util.List;
 @WebLog
 @Api(tags = "用户管理")
 public class AuthUserController extends SuperCacheController<IAuthUserService, Long,
-        AuthUser, AuthUserPageDTO, AuthUserSaveDTO, AuthUserUpdateDTO> {
+        AuthUser, AuthUserUpdateDTO, AuthUserSaveDTO, AuthUserPageDTO, Object> {
 
     @GetMapping("/pageList")
-    public PageInfo<AuthUser> userPageInfo(@RequestParam("name") String name){
-        PageHelper.startPage(1,10);
+    public PageInfo<AuthUser> userPageInfo(@RequestParam("name") String name) {
+        PageHelper.startPage(1, 10);
         List<AuthUser> authUsers = super.baseService.list(new LambdaQueryWrapper<AuthUser>().eq(AuthUser::getName, name));
         return PageInfoUtils.pageInfo(authUsers);
     }

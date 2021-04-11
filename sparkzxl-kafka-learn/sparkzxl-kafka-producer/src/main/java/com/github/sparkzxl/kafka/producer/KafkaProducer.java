@@ -1,17 +1,17 @@
 package com.github.sparkzxl.kafka.producer;
 
 import cn.hutool.core.util.IdUtil;
-import com.github.sparkzxl.kafka.producer.entity.JsonMessage;
+import com.github.sparkzxl.kafka.api.entity.JsonMessage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
 import com.github.javafaker.Faker;
 
 import java.util.Locale;
-import java.util.concurrent.ExecutionException;
 
 @Component
+@Slf4j
 public class KafkaProducer {
 
     @Autowired
@@ -32,9 +32,7 @@ public class KafkaProducer {
             int partition = success.getRecordMetadata().partition();
             // 消息在分区内的offset
             long offset = success.getRecordMetadata().offset();
-            System.out.println("发送消息成功:" + topic + "-" + partition + "-" + offset);
-        }, failure -> {
-            System.out.println("发送消息失败:" + failure.getMessage());
-        });
+            log.info("kafka发送消息成功:[{}]:[{}]:[{}]", topic, partition, offset);
+        }, failure -> log.info("kafka发送消息失败:[{}]", failure.getMessage()));
     }
 }

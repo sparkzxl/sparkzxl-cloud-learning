@@ -1,4 +1,4 @@
-package com.github.sparkzxl.kafka.customer.entity;
+package com.github.sparkzxl.kafka.api.entity;
 
 import lombok.Data;
 

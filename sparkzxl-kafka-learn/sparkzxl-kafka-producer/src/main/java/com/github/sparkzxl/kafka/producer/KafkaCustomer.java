@@ -1,5 +1,6 @@
 package com.github.sparkzxl.kafka.producer;
 
+import com.github.sparkzxl.kafka.api.entity.JsonMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -15,9 +16,9 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class KafkaCustomer {
 
-    @KafkaListener(topics = "sparkzxl-kafka-test",
-            groupId = "kafka-test-consumer-group-b-" + "sparkzxl-kafka-test")
-    public void onMessage(ConsumerRecord<Integer, String> record) {
-        log.info("[onMessage][线程编号:{} 消息内容：{}]", Thread.currentThread().getId(), record);
+    @KafkaListener(topics = JsonMessage.TOPIC_NAME,
+            groupId = "kafka-test-consumer-group-b-" + JsonMessage.TOPIC_NAME)
+    public void onMessage(JsonMessage message) {
+        log.info("kafka:[onMessage][线程编号:{} 消息内容：{}]", Thread.currentThread().getId(), message);
     }
 }
