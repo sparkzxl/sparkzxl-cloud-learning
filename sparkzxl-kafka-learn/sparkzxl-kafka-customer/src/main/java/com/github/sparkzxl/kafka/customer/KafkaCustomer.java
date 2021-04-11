@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class KafkaCustomer {
 
-    @KafkaListener(topics = "sparkzxl-kafka-test1",
-            groupId = "kafka-test-consumer-group-" + "sparkzxl-kafka-test1")
+    @KafkaListener(topics = "sparkzxl-kafka-test",
+            groupId = "kafka-test-consumer-group-a-" + "sparkzxl-kafka-test")
     public void onMessage(ConsumerRecord<Integer, String> record) {
         log.info("[onMessage][线程编号:{} 消息内容：{}]", Thread.currentThread().getId(), record);
     }

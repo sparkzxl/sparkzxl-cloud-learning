@@ -15,7 +15,7 @@ public class JsonMessage implements Serializable {
 
     private static final long serialVersionUID = 7888106307455991564L;
 
-    public static final String TOPIC_NAME = "sparkzxl-kafka-test1";
+    public static final String TOPIC_NAME = "sparkzxl-kafka-test";
 
     private Long userId;
 
