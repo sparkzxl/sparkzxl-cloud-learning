@@ -39,6 +39,7 @@
         <module>sparkzxl-sharding-demo</module>
         <module>sparkzxl-test-demo</module>
         <module>sparkzxl-sentinel-learn</module>
+        <module>sparkzxl-kafka-learn</module>
     </modules>
 
     <repositories>
