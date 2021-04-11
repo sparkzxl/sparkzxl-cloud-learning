@@ -2,7 +2,6 @@ package com.github.sparkzxl.kafka.customer;
 
 import com.github.sparkzxl.kafka.api.entity.JsonMessage;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
