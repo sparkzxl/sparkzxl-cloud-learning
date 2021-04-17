@@ -1,0 +1,27 @@
+server:
+  port: 8084
+spring:
+  profiles:
+    active: dev #默认为开发环境
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: sparkzxl-elasticsearch-learn
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+knife4j:
+  enable: true
+  description: sparkzxl elasticsearch在线文档
+  base-package: com.github.sparkzxl.elasticsearch.learn.controller
+  group: elasticsearch应用
+  title: sparkzxl elasticsearch在线文档
+  terms-of-service-url: https://www.sparksys.top
+  version: 1.0
+  license: Powered By sparkzxl
+  license-url: https://github.com/sparkzxl
+  contact:
+    name: zhouxinlei
+    email: zhouxinlei298@163.com
+    url: https://github.com/sparkzxl
+elasticsearch:
+  cluster-nodes: 192.168.3.14:9200
