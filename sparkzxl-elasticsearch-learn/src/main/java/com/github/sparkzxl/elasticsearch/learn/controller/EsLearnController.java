@@ -6,12 +6,15 @@ import cn.hutool.extra.pinyin.PinyinUtil;
 import com.github.javafaker.Faker;
 import com.github.sparkzxl.core.annotation.ResponseResult;
 import com.github.sparkzxl.core.utils.ListUtils;
+import com.github.sparkzxl.elasticsearch.contants.BaseElasticsearchConstant;
 import com.github.sparkzxl.elasticsearch.learn.entity.UserBasicInfo;
 import com.github.sparkzxl.elasticsearch.learn.service.IEsUserBasicInfoService;
 import com.github.sparkzxl.log.annotation.WebLog;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -77,6 +80,15 @@ public class EsLearnController {
     public Map<String, List<UserBasicInfo>> getUserInfoGroup(@RequestParam("ids") String ids) {
         List<String> idList = ListUtils.stringToList(ids);
         return esUserBasicInfoService.searchDocsMapByIdList("user_basic_info", idList, UserBasicInfo.class);
+    }
+
+    @ApiOperation("根据字段分组查询")
+    @GetMapping("/groupByField")
+    public Map<String, List<UserBasicInfo>> groupByField(@RequestParam("ids") String ids, @RequestParam("field") String field) {
+        List<String> idList = ListUtils.stringToList(ids);
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.query(QueryBuilders.termsQuery(BaseElasticsearchConstant.ES_ID, idList));
+        return esUserBasicInfoService.searchDocsGroupMap("user_basic_info", searchSourceBuilder, field, UserBasicInfo.class);
     }
 
     @ApiOperation("全部")
