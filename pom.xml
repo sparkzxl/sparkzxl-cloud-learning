@@ -18,9 +18,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
-        <jib-maven-plugin.version>2.5.0</jib-maven-plugin.version>
         <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
-        <maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
         <spring-boot-maven.version>2.3.5.RELEASE</spring-boot-maven.version>
         <mapstruct.version>1.4.0.CR1</mapstruct.version>
 
@@ -41,30 +39,9 @@
         <module>sparkzxl-sentinel-learn</module>
         <module>sparkzxl-kafka-learn</module>
         <module>sparkzxl-elasticsearch-learn</module>
+        <module>sparkzxl-nacos-learn</module>
     </modules>
 
-    <repositories>
-        <repository>
-            <id>maven-releases</id>
-            <url>http://47.114.40.129:8764/repository/maven-releases/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>maven-snapshots</id>
-            <url>http://47.114.40.129:8764/repository/maven-snapshots/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -150,29 +127,6 @@
                         </nonFilteredFileExtensions>
                     </configuration>
                 </plugin>
-                <!-- java文档插件 -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${maven-javadoc-plugin.version}</version>
-                    <configuration>
-                        <encoding>UTF-8</encoding>
-                        <!--<aggregate>true</aggregate>-->
-                        <charset>UTF-8</charset>
-                        <docencoding>UTF-8</docencoding>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>attach-javadocs</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                            <configuration>
-                                <additionalJOption>-Xdoclint:none</additionalJOption>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
                 <!--配置生成源码包 -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -200,51 +154,6 @@
                         </execution>
                     </executions>
                 </plugin>
-                <plugin>
-                    <groupId>com.google.cloud.tools</groupId>
-                    <artifactId>jib-maven-plugin</artifactId>
-                    <version>${jib-maven-plugin.version}</version>
-                    <configuration>
-                        <from>
-                            <image>registry.cn-hangzhou.aliyuncs.com/sparkzxl/jdk:1.8</image>
-                        </from>
-                        <to>
-                            <image>harbor.en2hr.com:8084/hongneng/${project.artifactId}</image>
-                            <tags>
-                                <tag>dev-${project.version}</tag>
-                            </tags>
-                            <auth>
-                                <username>zhouxinlei</username>
-                                <password>Zxl298828</password>
-                            </auth>
-                        </to>
-                        <container>
-                            <jvmFlags>
-                                <jvmFlag>-Xms512m</jvmFlag>
-                                <jvmFlag>-Xmx512m</jvmFlag>
-                                <jvmFlag>-Xdebug</jvmFlag>
-                            </jvmFlags>
-                            <appRoot>/home/${project.artifactId}</appRoot>
-                            <workingDirectory>/home/${project.artifactId}</workingDirectory>
-                            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
-                            <environment>
-                                <TZ>Asia/Shanghai</TZ>
-                            </environment>
-                            <labels>
-                                <name>${project.artifactId}</name>
-                            </labels>
-                        </container>
-                        <allowInsecureRegistries>true</allowInsecureRegistries>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>build</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -257,11 +166,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
             </plugin>
-            <!-- java文档插件 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-            </plugin>
             <!--配置生成源码包 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -272,20 +176,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
-    <distributionManagement>
-        <repository>
-            <id>maven-releases</id>
-            <url>http://47.114.40.129:8764/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>maven-snapshots</id>
-            <url>http://47.114.40.129:8764/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
