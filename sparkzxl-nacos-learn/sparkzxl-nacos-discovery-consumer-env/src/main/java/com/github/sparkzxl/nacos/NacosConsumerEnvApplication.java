@@ -14,10 +14,10 @@ import org.springframework.web.client.RestTemplate;
  * @date 2021-05-11 10:41:35
  */
 @SpringBootApplication(scanBasePackages = {"com.github.sparkzxl.nacos"})
-public class NacosConsumerApplication extends SparkBootApplication {
+public class NacosConsumerEnvApplication extends SparkBootApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NacosConsumerApplication.class, args);
+        SpringApplication.run(NacosConsumerEnvApplication.class, args);
     }
 
 

@@ -1,0 +1,22 @@
+spring:
+  cloud:
+    nacos:
+      # Nacos 作为注册中心的配置项，对应 NacosDiscoveryProperties 配置类
+      discovery:
+        server-addr: 47.114.40.129:8848 # Nacos 服务器地址
+        service: ${spring.application.name} # 注册到 Nacos 的服务名。默认值为 ${spring.application.name}。
+        namespace: 6657f6f1-6c27-48c0-8187-9f675237144a # Nacos 命名空间 uat 的编号
+knife4j:
+  enable: true
+  description: sparkzxl nacos provider在线文档
+  base-package: com.github.sparkzxl.nacos.controller
+  group: nacos provider应用
+  title: sparkzxl nacos provider在线文档
+  terms-of-service-url: https://www.sparksys.top
+  version: 1.0
+  license: Powered By sparkzxl
+  license-url: https://github.com/sparkzxl
+  contact:
+    name: zhouxinlei
+    email: zhouxinlei298@163.com
+    url: https://github.com/sparkzxl
